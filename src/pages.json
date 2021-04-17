@@ -1,9 +1,9 @@
 {
 	"pages": [
 		{
-			"path": "pages/home/index",
+			"path": "pages/info/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "个人信息"
 			}
 		},
 		{
@@ -12,6 +12,21 @@
 				"navigationBarTitleText": "我的"
 			}
 		},
+		
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/smoke/index",
+			"style": {
+				"navigationBarTitleText": "烟雾报警"
+			}
+		},
+		
+		
 		{
 			"path": "pages/discover/index",
 			"style": {
@@ -24,7 +39,18 @@
 				"navigationBarTitleText": "添加"
 			}
 		},
-		
+		{
+			"path": "pages/humiture/index",
+			"style": {
+				"navigationBarTitleText": "温湿度"
+			}
+		},
+		{
+			"path": "pages/switch/index",
+			"style": {
+				"navigationBarTitleText": "开关"
+			}
+		},
 		{
 			"path": "pages/login/index",
 			"style": {

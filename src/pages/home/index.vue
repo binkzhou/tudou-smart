@@ -10,7 +10,15 @@
     </view>
     <!-- 设备 开始 -->
     <view class="index_device">
-      <navigator url="" v-for="item in deviceList" :key="item.id">
+      <navigator url="/pages/humiture/index" v-for="item in deviceList" :key="item.id">
+        <image :src="`../../static/icons/${item.img}.png`" mode="widthFix"></image>
+        <view>{{ item.name }}</view>
+      </navigator>
+      <navigator url="/pages/smoke/index" v-for="item in deviceList" :key="item.id">
+        <image :src="`../../static/icons/${item.img}.png`" mode="widthFix"></image>
+        <view>{{ item.name }}</view>
+      </navigator>
+      <navigator url="/pages/switch/index" v-for="item in deviceList" :key="item.id">
         <image :src="`../../static/icons/${item.img}.png`" mode="widthFix"></image>
         <view>{{ item.name }}</view>
       </navigator>
@@ -50,6 +58,11 @@ export default Vue.extend({
 .tudou_index .index_swiper image {
   width: 100%;
 }
+.index_device{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .tudou_index .index_device navigator {
   float: left;
   margin-left: 20rpx;
@@ -57,6 +70,7 @@ export default Vue.extend({
   padding: 20rpx;
   width: 345rpx;
   height: 190rpx;
+  box-sizing: border-box;
   border-radius: 20rpx;
   background-color: white;
   box-shadow: 5rpx 7rpx 5px #ccc;

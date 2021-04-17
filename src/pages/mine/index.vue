@@ -1,39 +1,21 @@
 <template>
-  <view class="tudou_index">
-    <view class="user_info_wrap">
-      <view class="user_img_wrap">
-        <image class="user_bg" src="../../static/icons/bg.jpg"></image>
-        <view v-if="userinfo.nickName" class="user_info">
-          <image class="user_icon" :src="userinfo.avatarUrl"></image>
-          <view class="user_name">{{ userinfo.nickName }}</view>
-        </view>
-        <view v-else class="user_info">
-          <navigator url="/pages/login2/index">
-            <image class="user_icon" src="../../static/icons/ren.jpg"></image>
-            <view class="user_name">立即登录</view>
-          </navigator>
-        </view>
+  <view class="home_container">
+    <navigator url="/pages/info/index" class="home_card">
+      <image class="user_icon" src="../../static/icons/bg.jpg"></image>
+      <view class="home_title">
+        <text>游客</text>
+        <text>点击注册/登陆</text>
       </view>
-    </view>
-    <view class="user_content">
-      <view class="user_main">
-        <!-- 应用信息相关 -->
-        <view class="app_info_wrap">
-          <navigator url="/pages/feedback/index" class="app_info_item"
-            >常见问题</navigator
-          >
-          <navigator url="/pages/feedback/index" class="app_info_item"
-            >用户协议</navigator
-          >
-
-          <view class="app_info_item">关于我们</view>
-          <view class="app_info_item app_info_contact">
-            <text>联系客服</text>
-            <text>400-000-0000</text>
-          </view>
-        </view>
-        <!-- 推荐 -->
-        <view class="recommend_wrap"> 把应用推荐给其他人 </view>
+      <view>
+        <text>></text>
+      </view>
+    </navigator>
+    <view class="home_card">
+      <view>
+        <text>关于</text>
+      </view>
+      <view>
+        <text>></text>
       </view>
     </view>
   </view>
@@ -54,66 +36,35 @@ export default Vue.extend({
 </script>
 
 <style>
-page {
-  background-color: #edece8;
+page{
+  width: 100%;
+  box-sizing: border-box;
+  background: #ccc;
 }
-.user_info_wrap {
-  height: 45vh;
-  overflow: hidden;
-  background-color: var(--themeColor);
-  position: relative;
-}
-.user_info_wrap .user_img_wrap {
-  position: relative;
-}
-.user_info_wrap .user_img_wrap .user_bg {
-  height: 50vh;
-  filter: blur(7rpx);
-}
-.user_info_wrap .user_img_wrap .user_info {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 20%;
-  text-align: center;
-}
-.user_info_wrap .user_img_wrap .user_info .user_icon {
-  width: 150rpx;
-  height: 150rpx;
-  border-radius: 50%;
-}
-.user_info_wrap .user_img_wrap .user_info .user_name {
-  color: #fff;
-  margin-top: 40rpx;
-  font-size: 30rpx;
-}
-.user_content {
-  position: relative;
-}
-.user_content .user_main {
-  padding-bottom: 100rpx;
-  color: #666;
-  position: absolute;
-  width: 90%;
-  left: 50%;
-  transform: translateX(-50%);
-  top: -40rpx;
-}
-.user_content .user_main .app_info_wrap {
-  margin-top: 30rpx;
-  background-color: #fff;
-}
-.user_content .user_main .app_info_wrap .app_info_item {
-  padding: 25rpx;
-  border-bottom: 1rpx solid #ccc;
-}
-.user_content .user_main .app_info_wrap .app_info_contact {
+.home_card{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 50rpx;
+  padding: 10px;
+  background: #fff;
 }
-.user_content .user_main .recommend_wrap {
-  margin-top: 30rpx;
-  background-color: #fff;
-  padding: 25rpx;
+.home_card view:nth-of-type(1){
+  display: flex;
+  flex-direction: column;
+}
+.home_card .home_title text:last-child{
+  font-size: 25rpx;
+  color: #aaa;
+}
+.home_card view:nth-of-type(2){
+  flex: 1;
+  text-align: right;
+  color: #aaa;
+}
+.user_icon {
+  width: 100rpx;
+  height: 100rpx; 
+  margin-right: 10rpx;
 }
 </style>

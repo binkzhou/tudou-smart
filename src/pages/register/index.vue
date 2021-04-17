@@ -8,7 +8,7 @@
         <input class="uni-input" type="text" placeholder="请输入账号" />
         <input class="uni-input" password type="text" placeholder="请输入密码" />
       </view>
-      <button class="login_btn">登陆</button>
+      <button class="login_btn">注册</button>
       <view class="login_footer">
         <view>
           <text>已有账号？</text>
