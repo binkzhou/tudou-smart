@@ -12,28 +12,16 @@ npm run dev:mp-weixin
 
 ## 效果图
 
-![1620204248189](./assess/1620204248189.png)
+<img src="./assess/1620204248189.png" alt="1620204248189" style="zoom: 25%;" /><img src="./assess/1620204119433.png" alt="1620204119433" style="zoom: 25%;" />
 
-![1620204119433](./assess/1620204119433.png)
+<img src="./assess/1620204274271.png" alt="1620204274271" style="zoom: 25%;" /><img src="./assess/1620204362577.png" alt="1620204362577" style="zoom: 25%;" />
 
-![1620204274271](./assess/1620204274271.png)
+<img src="./assess/1620204381936.png" alt="1620204381936" style="zoom: 25%;" /><img src="./assess/1620204417493.png" alt="1620204417493" style="zoom:25%;" />
 
-![1620204362577](./assess/1620204362577.png)
+<img src="./assess/1620204452136.png" alt="1620204452136" style="zoom:25%;" /><img src="./assess/1620204483467.png" alt="1620204483467" style="zoom:25%;" />
 
-![1620204381936](./assess/1620204381936.png)
+<img src="./assess/1620204508367.png" alt="1620204508367" style="zoom:25%;" /><img src="./assess/1620204551590.png" alt="1620204551590" style="zoom:25%;" />
 
-![1620204417493](./assess/1620204417493.png)
+<img src="./assess/1620204571439.png" alt="1620204571439" style="zoom:25%;" /><img src="./assess/1620204584620.png" alt="1620204584620" style="zoom:25%;" />
 
-![1620204452136](./assess/1620204452136.png)
-
-![1620204483467](./assess/1620204483467.png)
-
-![1620204508367](./assess/1620204508367.png)
-
-![1620204551590](./assess/1620204551590.png)
-
-![1620204571439](./assess/1620204571439.png)
-
-![1620204584620](./assess/1620204584620.png)
-
-![1620204601435](./assess/1620204601435.png)
+<img src="./assess/1620204601435.png" alt="1620204601435" style="zoom:25%;" />
