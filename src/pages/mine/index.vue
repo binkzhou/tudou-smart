@@ -52,7 +52,7 @@
             </view>
             <view>
             </view>
-            <text>181-7128-3247</text>
+            <text>xxx-xxxx-xxxx</text>
           </view>
           <view class="app_info_item" @click="logout">
             <view>
