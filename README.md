@@ -1,19 +1,39 @@
-# tudou-smart
+# tudou-smart 前端
 
-## Project setup
+## 安装依赖
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+## 运行
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+npm run dev:mp-weixin
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 效果图
+
+![1620204248189](./assess/1620204248189.png)
+
+![1620204119433](./assess/1620204119433.png)
+
+![1620204274271](./assess/1620204274271.png)
+
+![1620204362577](./assess/1620204362577.png)
+
+![1620204381936](./assess/1620204381936.png)
+
+![1620204417493](./assess/1620204417493.png)
+
+![1620204452136](./assess/1620204452136.png)
+
+![1620204483467](./assess/1620204483467.png)
+
+![1620204508367](./assess/1620204508367.png)
+
+![1620204551590](./assess/1620204551590.png)
+
+![1620204571439](./assess/1620204571439.png)
+
+![1620204584620](./assess/1620204584620.png)
+
+![1620204601435](./assess/1620204601435.png)
