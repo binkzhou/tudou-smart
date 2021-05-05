@@ -1,9 +1,92 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
 		{
-			"path": "pages/index/index",
+			"path": "pages/home/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/chart/index", 
+			"style": {
+				"navigationBarTitleText": "今日温湿度变化",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/agreement/index",
+			"style": {
+				"navigationBarTitleText": "用户协议",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/about/index",
+			"style": {
+				"navigationBarTitleText": "关于我们",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/countdown/index",
+			"style": {
+				"navigationBarTitleText": "倒计时"
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登陆" 
+			}
+		},
+		{
+			"path": "pages/reset/index",
+			"style": {
+				"navigationBarTitleText": "重置密码"
+			}
+		},
+		{
+			"path": "pages/info/index",
+			"style": {
+				"navigationBarTitleText": "个人信息"
+			}
+		},
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		
+		{
+			"path": "pages/smoke/index",
+			"style": {
+				"navigationBarTitleText": "烟雾报警"
+			}
+		},
+		{
+			"path": "pages/add/index",
+			"style": {
+				"navigationBarTitleText": "添加"
+			}
+		},
+		{
+			"path": "pages/humiture/index",
+			"style": {
+				"navigationBarTitleText": "温湿度"
+			}
+		},
+		{
+			"path": "pages/switch/index",
+			"style": {
+				"navigationBarTitleText": "开关"
+			}
+		},
+		{
+			"path": "pages/register/index",
+			"style": {
+				"navigationBarTitleText": "注册"
 			}
 		}
 	],
@@ -12,5 +95,29 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#999",
+		"selectedColor": "#32bac0",
+		"borderStyle": "black",
+		"backgroundColor": "#fafafa",
+		"position":"bottom",
+		"list": [{
+			"pagePath": "pages/home/index",
+			"iconPath": "static/icons/home.png",
+			"selectedIconPath": "static/icons/home-o.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/add/index",
+			"iconPath": "static/icons/add.png",
+			"selectedIconPath": "static/icons/add-o.png",
+			"text": "添加"
+		},{
+			"pagePath": "pages/mine/index",
+			"iconPath": "static/icons/my.png",
+			"selectedIconPath": "static/icons/my-o.png",
+			"text": "我的"
+		}
+	]
 	}
 }
