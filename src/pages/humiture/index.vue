@@ -5,30 +5,60 @@
     <text class="r">注意保暖</text>
   </view>
   <view class="foot"> 
-    <view class="left">
-      <text class="lef">44.4</text>
-      <text class="rig">温度(℃)</text>
-    </view> 
-    <view class="right">
-      <text class="lef">98</text>
-      <text class="rig">湿度(%)</text>
+    <view>
+      <view class="left">
+        <text class="lef">{{deviceData.temp}}</text>
+        <text class="rig">温度(℃)</text>
+      </view> 
+      <view class="right">
+        <text class="lef">{{deviceData.humidity}}</text>
+        <text class="rig">湿度(%)</text>
+      </view>
     </view>
+    <navigator url="/pages/chart/index" class="more app_info_item">
+      <text>历史数据</text> 
+    </navigator>
   </view>
 </view>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
-const avatar = require("@/static/images/avatar.jpg");
 export default Vue.extend({
   data() {
     return {
-      title: "Hello",
-      src: avatar,
+      sn:'',
+      deviceData:{
+        temp:'20',
+        humidity:'80'
+      },
+      timer:''
     };
   },
-  onLoad() {},
+  onLoad(option) {
+    this.sn = option.sn;
+    this.getDeviceData();
+    this.timer = setInterval(() => {
+      this.getDeviceData();
+    }, 1000);
+  },
+  beforeDestroy(){
+    clearInterval(this.timer)
+  },
   methods: {
+    getDeviceData(){
+      uni.request({
+        url: 'device-data/getDeviceNewData',
+        data: {
+          sn:this.sn
+        },
+        success: (res) => {
+            if(res.data.code===200){
+              this.deviceData = JSON.parse(res.data.data.deviceNewData.data);
+            }
+          }
+        });
+    }
   },
 });
 </script>
@@ -63,11 +93,13 @@ export default Vue.extend({
   margin:70rpx 25rpx;
   background-color: white;
   color: black;
-  padding: 120rpx 0rpx;
+  
   border-radius: 30rpx;
 }
+.foot view:nth-of-type(1){
+  padding: 40rpx 0rpx;
+}
 .foot text{
-  
   display: block;
 }
 
@@ -91,5 +123,13 @@ export default Vue.extend({
 .rig{
   color: #999;
   font-size: 40rpx;
+}
+
+.foot .more{
+  height: 100%;
+  padding: 60rpx 0;
+  text-align: center;
+  border-top: 1px solid #eee;
+  color: #555;
 }
 </style>

@@ -8,13 +8,13 @@
         bindtap="img"
       ></image>
     </view>
-    <button type="primary" bindtap="scan" style="width: 650rpx">
+    <button type="primary" bindtap="scan" style="width: 650rpx" @click="addDevice">
       添加设备
     </button>
   </view>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
 export default Vue.extend({
   data() {
@@ -23,7 +23,38 @@ export default Vue.extend({
     };
   },
   onLoad() {},
-  methods: {},
+  methods: {
+    addDevice(){
+
+      // 允许从相机和相册扫码 
+      uni.scanCode(
+        {
+          success: function (res) {
+              const sn = JSON.parse(res.result).sn;
+              uni.request({
+                url: 'device/addDevice',
+                method:'POST',
+                data: {
+                    sn
+                },
+                success: (res) => {
+                    if(res.data.code===200){
+                      wx.switchTab({
+                          url: '/pages/home/index'
+                      });
+                    }else{
+                      uni.showToast({
+                          title: res.data.message,
+                          duration: 2000,
+                          icon:'none'
+                      });
+                    }
+                }
+            });
+          }
+      });
+    }
+  },
 });
 </script>
 

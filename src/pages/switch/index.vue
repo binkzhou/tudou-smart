@@ -1,20 +1,19 @@
 <template>
   <div>
     <view class="top"> 
-    <view bindtap="start" :class="num==1?'on':''">
+    <view bindtap="start" :class="off_on=='on'?'on':''" @click="swOn_Off">
         <text class="iconfont icon-wulu "></text>
     </view>
-    <text>在线状态:{{net==1?'在线':'离线'}}</text>
     </view>
     <view class="foot"> 
-    <view class="nav">
-        <navigator url="" >
-        <text class="iconfont icon-icon-test" ></text>
-        </navigator>
-        <text>定时</text>
+    <view class="nav"  @click="swOn_Off">
+        <view class="sw" :class="off_on=='on'?'on':''">
+          <text class="iconfont icon-wulu"></text>
+        </view>
+        <text>开关</text>
     </view>
     <view class="nav" >
-        <navigator url="">
+        <navigator :url="`/pages/countdown/index?sn=${sn}`">
         <text class="iconfont icon-daojishi"></text>
         </navigator>
         <text>倒计时</text>
@@ -27,16 +26,59 @@
 export default {
     data(){
         return{
-            net: 1,
-            num: 2
+            sn:'',
+            off_on: 'off',
+            timer:''
         }
+    },
+    onLoad(option){
+      this.sn = option.sn;
+      this.getDeviceData();
+      this.timer = setInterval(() => {
+        this.getDeviceData();
+      }, 300);
+    },
+    beforeDestroy(){
+      clearInterval(this.timer)
+    },
+    methods:{
+      getDeviceData(){
+        uni.request({
+          url: 'device-data/getDeviceNewData',
+          data: {
+            sn:this.sn
+          },
+          success: (res) => {
+              if(res.data.code===200){
+                this.off_on = JSON.parse(res.data.data.deviceNewData.data).off_on;
+              }
+            }
+          });
+      },
+      swOn_Off(){
+        const topic = `smart/${this.sn}`;
+        const data = `{"on_off":${this.off_on=='off'?'"on"':'"off"'}}`;
+        uni.request({
+          url: `device/send`,
+          method:'POST',
+          data:{
+            topic:topic,
+            data:data
+          },
+          success: (res) => {
+              if(res.data.code===200){
+                this.off_on = JSON.parse(res.data.data.deviceNewData.data).off_on;
+              }
+            }
+          });
+      }
     }
 }
 </script>
 
 <style>
 @font-face {
-  font-family: 'iconfont';  /* project id 2081637 */
+  font-family: 'iconfont';
   src: url('//at.alicdn.com/t/font_2081637_2m4eb4bzfuj.eot');
   src: url('//at.alicdn.com/t/font_2081637_2m4eb4bzfuj.eot?#iefix') format('embedded-opentype'),
   url('//at.alicdn.com/t/font_2081637_2m4eb4bzfuj.woff2') format('woff2'),
@@ -45,7 +87,8 @@ export default {
   url('//at.alicdn.com/t/font_2081637_2m4eb4bzfuj.svg#iconfont') format('svg');
 }
 page{
-  background-color: #37c3f8;
+  background-color: #32bac0;
+
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -71,10 +114,7 @@ page{
   content: "\e64a";
 }
 
-/* 上 */
-
 .top{
-  /* border: 1px solid red; */
   padding: 200rpx 0;
   text-align: center;
 }
@@ -96,9 +136,7 @@ page{
 }
 
 .top view text{
-  
   font-size: 100rpx;
-  /* color: white; */
   color: white;
 }
 
@@ -108,7 +146,6 @@ page{
 
 /* 中间 */
 .center{
-  /* border: 1px solid rebeccapurple; */
   text-align: center;
 }
 
@@ -133,16 +170,20 @@ page{
 .foot .nav{
   width: 375rpx;
   height: 200rpx;
-  /* line-height: 200rpx; */
   text-align: center;
-  /* border: 1px solid blue; */
   float: left;
+}
+.foot .nav .on{
+  border-color: #32bac0;
+}
+.foot .nav .on text{
+  color: #32bac0;
 }
 .foot .nav text{
   display: block;
 }
 
-.foot .nav navigator{
+.foot .nav navigator,.sw{
   width: 100rpx;
   height: 100rpx;
   line-height: 100rpx;

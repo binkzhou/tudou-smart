@@ -1,53 +1,70 @@
 <template>
-  <view class="somke_content">
-    <view class="somke_iconContainer">
-      <text class="iconfont icon-huoyan smoke_icon"></text>
+  <div class="somke_content">
+    <view class="top"> 
+    <view bindtap="start" :class="deviceData.fire==1?'on':''">
+        <text class="iconfont icon-huoyan smoke_icon"></text>
     </view>
-     <view class="smoke_state">
-      <view class="smoke_item">
-        <text class="iconfont icon-wifi"></text>
-        <text class="somke_con">已联网</text>
-      </view>
-      <view class="smoke_item">
-        <text class="iconfont icon-huoyan"></text>
-        <text class="somke_con">未感应到</text>
-      </view>
-      <view class="smoke_item">
-        <text class="iconfont icon-yangan"></text>
-        <text class="somke_con">未感应到</text>
-      </view>
     </view>
-    <view class="smoke_detail"> 
-      <view>
-        <text>是否有明火</text>
-        <text>有</text>
+    <view class="foot"> 
+      <view class="nav">
+        <view class="nav_left">
+          <text class="iconfont icon-huoyan"></text>
+          <text>是否有明火</text>
+        </view>
+        <view class="nav_right">
+          <text>{{deviceData.fire==='1'?'有':'无'}}</text>
+        </view>
       </view>
-      <view>
-        <text>烟雾浓度</text>
-        <text>80%</text>
+      <view class="nav" >
+        <view class="nav_left">
+          <text class="iconfont icon-yangan"></text>
+          <text>烟雾浓度</text>
+        </view>
+        <view class="nav_right">
+          <text>{{deviceData.smoke}}%</text>
+        </view>
       </view>
     </view>
-  </view>
+  </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
-const avatar = require("@/static/images/avatar.jpg");
 export default Vue.extend({
   data() {
     return {
-      title: "Hello",
-      src: avatar,
+      sn:'',
+      deviceData:{
+        smoke:'20',
+        fire:'0'
+      },
+      timer:''
     };
   },
-  onLoad() {},
+  onLoad(option) {
+    this.sn = option.sn;
+    this.getDeviceData();
+    this.timer = setInterval(() => {
+      this.getDeviceData();
+    }, 300);  
+  },
+  beforeDestroy(){
+    clearInterval(this.timer)
+  },
   methods: {
-    // 去注册页面
-    goto(url:string) {
-      uni.redirectTo({
-        url: url,
-      });
-    },
+    getDeviceData(){
+      uni.request({
+        url: 'device-data/getDeviceNewData',
+        data: {
+          sn:this.sn
+        },
+        success: (res) => {
+            if(res.data.code===200){
+              this.deviceData = JSON.parse(res.data.data.deviceNewData.data);
+            } 
+          }
+        });
+    }
   },
 });
 </script>
@@ -86,62 +103,108 @@ export default Vue.extend({
 .icon-yangan:before {
   content: "\e642";
 }
-.somke_content{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  color: #fff;
-  background: #2f7fe7;
+page{
+  background-color: #32bac0;
 }
-.somke_iconContainer{
-  background: #54A3EA;
-  margin-top: 100rpx;
-  padding: 100rpx;
-  border: 50rpx solid #2684E4;
-  border-radius: 50%;
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.smoke_icon{
-  font-size: 150rpx;
+
+.icon-tongji:before {
+  content: "\e649";
+}
+
+.icon-icon-test:before {
+  content: "\e614";
+}
+
+.icon-wulu:before {
+  content: "\e7eb";
+}
+
+.icon-daojishi:before {
+  content: "\e64a";
+}
+
+/* 上 */
+
+.top{
+  padding: 200rpx 0;
+  text-align: center;
+}
+.top>text{
+  margin-top: 50rpx;
+  font-size: 30rpx;
+  display: inline-block;
   color: white;
 }
-.smoke_state{
-  display: flex;
-  justify-content: space-between;
-  width: 600rpx;
-}
-.smoke_item{
-  color: #fff;
-}
-.smoke_item text{
-  display: block;
+.top>view{
+  height: 300rpx;
+  width: 300rpx;
+  line-height:300rpx;
   text-align: center;
-  font-size: 70rpx;
+  border: 1px solid white;
+  border-radius: 150rpx;
+  margin: auto;
+  
 }
-.smoke_item .somke_con{
-  margin-top: 20rpx;
-  font-size: 30rpx;
+
+.top>view>text{
+  font-size: 100rpx;
+  color: white;
 }
-.smoke_detail{
-  display: flex;
-  width: 100%;
-  margin-top: 100rpx;
+.on{
+  border: 2px solid rgb(243, 117, 117) !important;
+  box-shadow: 0px 0px 20px rgb(247, 63, 63);
 }
-.smoke_detail view{
-  flex: 1;
+.on text{
+  color: rgb(247, 63, 63) !important;
+}
+/* 中间 */
+.center{
+  text-align: center;
+}
+
+.center>view>text{
+  display: block;
+  font-size: 40rpx;
+  color: white;
+  margin: 20rpx 0;
+}
+
+/* 下 */
+.foot{
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 450rpx;
+  position:fixed;
+  bottom: 0rpx;
+  background-color: white;
+}
+
+.foot .nav{
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 100rpx;
-  /* border: 1px solid red; */
+  padding: 0 50rpx;
+  font-size: 50rpx;
+  color: #555;
+  text-align: center;
+  border: 1px solid #eee;
 }
-.smoke_detail view:first-child{
-  font-size: 40rpx;
-  border-right: 1px solid #6bbef1;
+.nav_left{
+  display: flex;
+  align-items: center;
 }
-.smoke_detail view text:first-child{
-  font-size: 30rpx;
-  margin-bottom: 50rpx;
+.nav_left text:nth-of-type(1){
+  margin-right: 20rpx;
+  color: #555;
+  font-size: 80rpx;
 }
 </style>

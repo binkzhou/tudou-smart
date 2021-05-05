@@ -1,6 +1,52 @@
 {
 	"pages": [
 		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/chart/index", 
+			"style": {
+				"navigationBarTitleText": "今日温湿度变化",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/agreement/index",
+			"style": {
+				"navigationBarTitleText": "用户协议",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/about/index",
+			"style": {
+				"navigationBarTitleText": "关于我们",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/countdown/index",
+			"style": {
+				"navigationBarTitleText": "倒计时"
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登陆" 
+			}
+		},
+		{
+			"path": "pages/reset/index",
+			"style": {
+				"navigationBarTitleText": "重置密码"
+			}
+		},
+		{
 			"path": "pages/info/index",
 			"style": {
 				"navigationBarTitleText": "个人信息"
@@ -14,23 +60,9 @@
 		},
 		
 		{
-			"path": "pages/home/index",
-			"style": {
-				"navigationBarTitleText": "首页"
-			}
-		},
-		{
 			"path": "pages/smoke/index",
 			"style": {
 				"navigationBarTitleText": "烟雾报警"
-			}
-		},
-		
-		
-		{
-			"path": "pages/discover/index",
-			"style": {
-				"navigationBarTitleText": "发现"
 			}
 		},
 		{
@@ -49,12 +81,6 @@
 			"path": "pages/switch/index",
 			"style": {
 				"navigationBarTitleText": "开关"
-			}
-		},
-		{
-			"path": "pages/login/index",
-			"style": {
-				"navigationBarTitleText": "登陆"
 			}
 		},
 		{
@@ -87,15 +113,10 @@
 			"selectedIconPath": "static/icons/add-o.png",
 			"text": "添加"
 		},{
-			"pagePath": "pages/discover/index",
-			"iconPath": "static/icons/discover.png",
-			"selectedIconPath": "static/icons/discover-o.png",
-			"text": "发现"
-		},{
 			"pagePath": "pages/mine/index",
 			"iconPath": "static/icons/my.png",
 			"selectedIconPath": "static/icons/my-o.png",
-			"text": "发现"
+			"text": "我的"
 		}
 	]
 	}
